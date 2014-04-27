@@ -9,7 +9,7 @@ package TwitterParser.TweetParser.frontend;
  * and open the template in the editor.
  */
 
-import TwitterParser.TweetParser.Settings;
+import TwitterParser.TweetParser.settings;
 import TwitterParser.TweetParser.filters.tweetFilter;
 import TwitterParser.TweetParser.processors.twitterprocess;
 import TwitterParser.helpers.JobFileIO;
@@ -350,7 +350,7 @@ public class main_gui extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         dataset = new String[]{"/Users/toddbodnar/data/"};
-        dataset = new String[]{Settings.data_location};
+        dataset = new String[]{settings.data_location};
         dates = new int[]{20110000,20200000};
        
         jTextField1.setText("Full Data");
@@ -413,8 +413,7 @@ public class main_gui extends javax.swing.JFrame {
 
             @Override
             public void run() {
-                //TODO: implement settingsgui
-                //new Settings().setVisible(true);
+                new settings_gui().setVisible(true);
             }
         })).start();
     }                                          
@@ -493,7 +492,7 @@ public class main_gui extends javax.swing.JFrame {
                 //dataset[ct-dates[0]] = "/gpfs/home/tjb5215/scratch/allTweets/tweets/"+ct+"/";
             }
             
-            dataset = new String[]{Settings.data_location};
+            dataset = new String[]{settings.data_location};
         
             System.out.println("Timeframe: "+dates[0]+" "+dates[1]);
         
@@ -528,8 +527,8 @@ public class main_gui extends javax.swing.JFrame {
         if(args.length>0)
         {
             try {
-                Settings.load();
-            } catch (FileNotFoundException ex) {
+                settings_gui.load();
+            } catch (IOException ex) {
                 System.err.println("Error, could not find config file");
                 Logger.getLogger(main_gui.class.getName()).log(Level.SEVERE, null, ex);
                 System.exit(-5);
@@ -565,8 +564,8 @@ public class main_gui extends javax.swing.JFrame {
         }
         //</editor-fold>
             try {
-                Settings.load();
-            } catch (FileNotFoundException ex) {
+                settings_gui.load();
+            } catch (IOException ex) {
                 //Logger.getLogger(mainGui.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null,"Settings are not set, please do so in edit->settings");
             }

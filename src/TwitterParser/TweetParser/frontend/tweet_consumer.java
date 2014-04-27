@@ -4,7 +4,7 @@
  */
 package TwitterParser.TweetParser.frontend;
 
-import TwitterParser.TweetParser.Settings;
+import TwitterParser.TweetParser.settings;
 import TwitterParser.TweetParser.filters.multiProcess;
 import TwitterParser.TweetParser.processors.twitterprocess;
 import TwitterParser.TweetParser.tweet;
@@ -54,14 +54,14 @@ public class tweet_consumer {
      * @param data The set of files to process
      * @param processes The processes to apply
      * @param title The title of the job
-     * @param g The gui, if any, to display the job's updates
+     * @param the_gui The gui, if any, to display the job's updates
      * @throws FileNotFoundException
      * @throws IOException 
      */
     public static void consume (String data[], twitterprocess[] processes, String title, main_gui g) throws FileNotFoundException, IOException
     {   
         
-        tweet_consumer.g = g;
+        tweet_consumer.the_gui = g;
         boolean progress = false, buffStat = false, endSms = false, update = false;
         int updateRate = 0;
         
@@ -169,11 +169,11 @@ public class tweet_consumer {
             try{
             File current = files.get(ct);
             BufferedReader in = null;
-            if(Settings.data_type == input_type.API_TWEET){
+            if(settings.data_type == input_type.API_TWEET){
             GZIPInputStream gzipin = new GZIPInputStream(new FileInputStream(current));
              in = new BufferedReader(new InputStreamReader(gzipin));
             }
-            else if(Settings.data_type == input_type.TWITTER4J_TWEET)
+            else if(settings.data_type == input_type.TWITTER4J_TWEET)
             {
                 in = new BufferedReader(new InputStreamReader(new FileInputStream(current)));
             }
@@ -186,7 +186,7 @@ public class tweet_consumer {
                     break;
                 }
                 
-                if(Settings.data_type == input_type.TWITTER4J_TWEET && !result.contains("StatusJSONImpl"))
+                if(settings.data_type == input_type.TWITTER4J_TWEET && !result.contains("StatusJSONImpl"))
                 {
                     System.err.println(result);
                     continue;
@@ -293,7 +293,7 @@ public class tweet_consumer {
                 try {
                     str_pair sp = in.poll(10, TimeUnit.SECONDS);
                     out2 = sp.two;
-                    tweet t = new tweet(sp.one, Settings.data_type,sp.two);
+                    tweet t = new tweet(sp.one, settings.data_type,sp.two);
                     out.put(t);
                     tweetCount++;
                 } catch (InterruptedException ex) {
@@ -325,12 +325,12 @@ public class tweet_consumer {
             while(!done && !tweet_consumer.finished)
             {
                 /*try {
-                    Thread.sleep(Settings.updatetime*60*1000);
+                    Thread.sleep(settings.updatetime*60*1000);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(tweet_consumer.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                if(Settings.update)
-                    mailer.sendText(name+ " Update", remaining.getText()+"\n\n("+progress.getValue()+"/"+ progress.getMaximum() +")", Settings.number);
+                if(settings.update)
+                    mailer.sendText(name+ " Update", remaining.getText()+"\n\n("+progress.getValue()+"/"+ progress.getMaximum() +")", settings.number);
             
             */
              }
@@ -431,15 +431,15 @@ public class tweet_consumer {
             
             System.out.println(report);
             
-            //if(Settings.finish)
-            //    mailer.sendText("Job Complete", report,Settings.number);
+            //if(settings.finish)
+            //    mailer.sendText("Job Complete", report,settings.number);
                 
-            g.reportArea.setText(g.reportArea.getText()+"\n----------------\n"+report);
+            the_gui.reportArea.setText(the_gui.reportArea.getText()+"\n----------------\n"+report);
             
         }
     }
     
-    static main_gui g;
+    static main_gui the_gui;
     static long tweetCount = 0;
     
    
