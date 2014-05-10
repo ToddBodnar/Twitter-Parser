@@ -59,7 +59,7 @@ public class tweet_consumer {
      * @throws IOException 
      */
     public static void consume (String data[], twitterprocess[] processes, String title, main_gui g) throws FileNotFoundException, IOException
-    {   
+{   
         
         tweet_consumer.the_gui = g;
         boolean progress = false, buffStat = false, endSms = false, update = false;
