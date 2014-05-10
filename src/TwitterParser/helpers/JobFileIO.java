@@ -6,6 +6,7 @@ package TwitterParser.helpers;
 
 
 import TwitterParser.TweetParser.filters.tweetFilter;
+import TwitterParser.TweetParser.processors.nullProcess;
 import TwitterParser.TweetParser.processors.toSQL;
 import TwitterParser.TweetParser.processors.twitterprocess;
 import java.io.*;
@@ -81,7 +82,7 @@ public class JobFileIO {
         }
         return null;
     }
-    public static twitterprocess processlist[] = new twitterprocess[]{new toSQL()};//{new handrate(), new averageLocations(), new keywordFrequencies(), new mapProcess(), new usersbyweek(),new symptomRecorder(), new frequent_keywords(), new tweet_counter(""), new word_frequencies(), new printTweets(), new dynamoFill(), new crowdbreaks_tweets_to_raw_long_lat(), new printReTweets(), new userRating(false)};
+    public static twitterprocess processlist[] = new twitterprocess[]{new toSQL(), new nullProcess()};//{new handrate(), new averageLocations(), new keywordFrequencies(), new mapProcess(), new usersbyweek(),new symptomRecorder(), new frequent_keywords(), new tweet_counter(""), new word_frequencies(), new printTweets(), new dynamoFill(), new crowdbreaks_tweets_to_raw_long_lat(), new printReTweets(), new userRating(false)};
     /**
      * 
      */
