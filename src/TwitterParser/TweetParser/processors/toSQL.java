@@ -62,7 +62,7 @@ public class toSQL implements twitterprocess{
             
             if(tweets % commitRate == 0)
             {
-                connection.commit();
+                push();
             }
             
         } catch (SQLException ex) {
@@ -78,13 +78,19 @@ public class toSQL implements twitterprocess{
     @Override
     public String end() {
         try {
-            connection.commit();
+            push();
             connection.close();
         } catch (SQLException ex) {
             Logger.getLogger(toSQL.class.getName()).log(Level.SEVERE, null, ex);
 //            return "Error closing SQL: "+ex.toString();
         }
         return "SQL Closed: "+errors+" errors";
+    }
+    
+    private void push() throws SQLException
+    {
+        connection.createStatement().executeUpdate("REPLACE INTO tweets select tweet_id,longitude, latitude, text,time,user_id from tweets_tmp");
+        connection.createStatement().executeUpdate("TRUNCATE tweets_tmp");
     }
 
     @Override
@@ -95,7 +101,7 @@ public class toSQL implements twitterprocess{
     private PreparedStatement stat;
     private int errors = 0;
     private long tweets = 0;
-    private static final int commitRate = 1000;
+    private static final int commitRate = 100000;
     
     String dbType = "org.gjt.mm.mysql.Driver";
     String dbURL = "jdbc:mysql://localhost:8889/tweets";
@@ -174,14 +180,24 @@ public class toSQL implements twitterprocess{
 "  `tweet_id` bigint(11) unsigned NOT NULL,\n" +
 "  `longitude` float DEFAULT NULL,\n" +
 "  `latitude` float DEFAULT NULL,\n" +
-"  `text` text NOT NULL,\n" +
+"  `text` varchar(512) NOT NULL,\n" + //varchar(140) doesn't necessarily have enough space if decoding unicode chars
+"  `time` datetime NOT NULL,\n" +
+"  `user_id` bigint(11) NOT NULL,\n" +
+"  PRIMARY KEY (`tweet_id`)\n" +
+") ENGINE=MyISAM DEFAULT CHARSET=utf8");
+            
+            connection.createStatement().executeUpdate("CREATE temporary TABLE IF NOT EXISTS `tweets_tmp` (\n" +
+"  `tweet_id` bigint(11) unsigned NOT NULL,\n" +
+"  `longitude` float DEFAULT NULL,\n" +
+"  `latitude` float DEFAULT NULL,\n" +
+"  `text` varchar(512) NOT NULL,\n" +
 "  `time` datetime NOT NULL,\n" +
 "  `user_id` bigint(11) NOT NULL\n" +
 //",  PRIMARY KEY (`tweet_id`)\n" +
-") ENGINE=MyISAM DEFAULT CHARSET=utf8");
+") ENGINE=MEMORY DEFAULT CHARSET=utf8");
             
             //connection.setAutoCommit( false);
-            stat = connection.prepareStatement("INSERT INTO tweets (longitude,latitude, text, time, tweet_id, user_id) VALUES(?,?,?,?,?,?)");
+            stat = connection.prepareStatement("INSERT INTO tweets_tmp (longitude,latitude, text, time, tweet_id, user_id) VALUES(?,?,?,?,?,?)");
            
     }
     @Override
