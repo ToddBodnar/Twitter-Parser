@@ -5,6 +5,7 @@
 package TwitterParser.helpers;
 
 
+import TwitterParser.TweetParser.filters.keyword_filter;
 import TwitterParser.TweetParser.filters.tweetFilter;
 import TwitterParser.TweetParser.processors.nullProcess;
 import TwitterParser.TweetParser.processors.toSQL;
@@ -14,6 +15,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import TwitterParser.TweetParser.filters.locationFilter;
+import TwitterParser.TweetParser.processors.writeTweets;
 /**
  * File Structure:
  * 
@@ -82,9 +85,9 @@ public class JobFileIO {
         }
         return null;
     }
-    public static twitterprocess processlist[] = new twitterprocess[]{new toSQL(), new nullProcess()};//{new handrate(), new averageLocations(), new keywordFrequencies(), new mapProcess(), new usersbyweek(),new symptomRecorder(), new frequent_keywords(), new tweet_counter(""), new word_frequencies(), new printTweets(), new dynamoFill(), new crowdbreaks_tweets_to_raw_long_lat(), new printReTweets(), new userRating(false)};
+    public static twitterprocess processlist[] = new twitterprocess[]{new toSQL(), new nullProcess(), new writeTweets()};//{new handrate(), new averageLocations(), new keywordFrequencies(), new mapProcess(), new usersbyweek(),new symptomRecorder(), new frequent_keywords(), new tweet_counter(""), new word_frequencies(), new printTweets(), new dynamoFill(), new crowdbreaks_tweets_to_raw_long_lat(), new printReTweets(), new userRating(false)};
     /**
      * 
      */
-    public static tweetFilter filters[] = new tweetFilter[]{};//new keyword_filter(null), new countFilter(0,null), new nGramRefactor(null,-1), new regionFilter(0,null)};
+    public static tweetFilter filters[] = new tweetFilter[]{new locationFilter(), new keyword_filter(null)};//new keyword_filter(null), new countFilter(0,null), new nGramRefactor(null,-1), new regionFilter(0,null)};
 }
