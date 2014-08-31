@@ -170,8 +170,15 @@ public class tweet_consumer {
             File current = files.get(ct);
             BufferedReader in = null;
             if(settings.data_type == input_type.API_TWEET){
-            GZIPInputStream gzipin = new GZIPInputStream(new FileInputStream(current));
+                GZIPInputStream gzipin = null;
+                try{
+             gzipin = new GZIPInputStream(new FileInputStream(current));
              in = new BufferedReader(new InputStreamReader(gzipin));
+                }catch(java.io.IOException e)
+                {
+                    continue;
+                }
+                    in = new BufferedReader(new InputStreamReader(gzipin));
             }
             else if(settings.data_type == input_type.TWITTER4J_TWEET)
             {

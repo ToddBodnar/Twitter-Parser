@@ -36,6 +36,10 @@ public class settings_gui extends JFrame{
         jTextField2.setText(settings.updatetime+"");
         jCheckBox1.setSelected(settings.update);
         jCheckBox2.setSelected(settings.finish);
+        
+        jCheckBox1.setEnabled(false);
+        jCheckBox2.setEnabled(false);
+        
         dataDirectoryText.setText(settings.data_location);
     }
 
@@ -79,7 +83,11 @@ public class settings_gui extends JFrame{
 
         jLabel3.setText("Send Updates?");
 
+        
+        
         jLabel4.setText("Send End Message");
+        
+     
 
         jTextField1.setText("15555550125");
 

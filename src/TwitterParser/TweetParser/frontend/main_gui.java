@@ -362,7 +362,7 @@ public class main_gui extends javax.swing.JFrame {
         dataset = new String[end-begin+1];
         dates = new int[]{begin,end};
         for(int ct=begin;ct<=end;ct++)
-            dataset[ct-begin] = "/Users/toddbodnar/data/"+ct+"/";
+            dataset[ct-begin] = settings.data_location+"/"+ct+"/";
         
         jTextField1.setText("Custom "+begin+" "+end);
     }                                          
@@ -399,7 +399,8 @@ public class main_gui extends javax.swing.JFrame {
         dataset = new String[dates[1]-dates[0]+1];
         
         for(int ct=dates[0];ct<=dates[1];ct++)
-            dataset[ct-dates[0]] = "/Users/toddbodnar/data/"+ct+"/";
+            dataset[ct-dates[0]] = settings.data_location+"/"+ct+"/";
+        
         
         jTextField1.setText("Custom "+dates[0]+" "+dates[1]);
         
