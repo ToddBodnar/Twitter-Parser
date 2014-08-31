@@ -97,11 +97,12 @@ public class toSQL implements twitterprocess{
     public boolean quitAtEnd() {
         return true;
     }
+    
     private Connection connection;
     private PreparedStatement stat;
     private int errors = 0;
     private long tweets = 0;
-    private static final int commitRate = 100000;
+    private static final int commitRate = 1000;
     
     String dbType = "org.gjt.mm.mysql.Driver";
     String dbURL = "jdbc:mysql://localhost:8889/tweets";
@@ -140,7 +141,7 @@ public class toSQL implements twitterprocess{
         else
             child.dbAcct = dbAcct;
         
-        input = JOptionPane.showInputDialog("DB password?\n(Default: "+dbPass+")");
+        input = JOptionPane.showInputDialog("DB password?\n(Default: "+dbPass+")\n\nWarning! Password saved in plain text,\n recomentd unique account for parser.");
         if(!input.equals(""))
             child.dbPass = input;
         else
@@ -162,12 +163,27 @@ public class toSQL implements twitterprocess{
 
     @Override
     public twitterprocess load(String in) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String split[] = in.split(";");
+        toSQL child = new toSQL();
+        
+        child.dbType=split[0];
+        child.dbURL=split[1];
+        child.dbAcct=split[2];
+        child.dbPass=split[3];
+        
+        try {
+            child.init();
+        } catch (Exception ex) {
+            Logger.getLogger(toSQL.class.getName()).log(Level.SEVERE, null, ex);
+            System.exit(-10);
+        }
+        
+        return child;
     }
 
     @Override
     public String save() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return dbType+";"+dbURL+";"+dbAcct+";"+dbPass;
     }
 
     private void init() throws Exception
