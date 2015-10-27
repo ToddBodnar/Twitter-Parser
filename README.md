@@ -1,5 +1,3 @@
-**WORK IN PROGRESS, NOT GUARANTEED TO WORK YET!!**
-
 Twitter-Parser
 ==============
 
