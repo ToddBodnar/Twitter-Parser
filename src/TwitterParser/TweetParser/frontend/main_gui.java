@@ -302,7 +302,7 @@ public class main_gui extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        //jMenu3.add(jMenuItem2);
 
         jMenuItem3.setText("Full Data");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -318,7 +318,7 @@ public class main_gui extends javax.swing.JFrame {
                 jMenuItem4ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem4);
+        //jMenu3.add(jMenuItem4);
 
         jMenuBar1.add(jMenu3);
 

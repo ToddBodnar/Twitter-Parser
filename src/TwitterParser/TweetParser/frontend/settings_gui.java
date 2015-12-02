@@ -32,13 +32,13 @@ public class settings_gui extends JFrame{
     public settings_gui() {
         initComponents();
         
-        jTextField1.setText(settings.number);
-        jTextField2.setText(settings.updatetime+"");
-        jCheckBox1.setSelected(settings.update);
-        jCheckBox2.setSelected(settings.finish);
-        
-        jCheckBox1.setEnabled(false);
-        jCheckBox2.setEnabled(false);
+//        jTextField1.setText(settings.number);
+//        jTextField2.setText(settings.updatetime+"");
+//        jCheckBox1.setSelected(settings.update);
+//        jCheckBox2.setSelected(settings.finish);
+//        
+//        jCheckBox1.setEnabled(false);
+//        jCheckBox2.setEnabled(false);
         
         dataDirectoryText.setText(settings.data_location);
     }
@@ -61,7 +61,7 @@ public class settings_gui extends JFrame{
         jCheckBox1 = new javax.swing.JCheckBox();
         jTextField2 = new javax.swing.JTextField();
         jCheckBox2 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        applyButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         smtpField = new javax.swing.JTextField();
@@ -77,7 +77,7 @@ public class settings_gui extends JFrame{
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Text Settings");
 
-        jLabel1.setText("Number");
+        jLabel1.setText("Required");
 
         jLabel2.setText("Time Between Updates");
 
@@ -92,7 +92,7 @@ public class settings_gui extends JFrame{
         jTextField1.setText("15555550125");
 
         jTextField2.setText("120");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        /*jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
@@ -103,10 +103,10 @@ public class settings_gui extends JFrame{
             }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
-        });
+        });*/
 
-        jButton1.setText("Apply");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        applyButton.setText("Apply");
+        applyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
@@ -138,103 +138,43 @@ public class settings_gui extends JFrame{
 
         jLabel10.setText("Required");
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jSeparator1)
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(jLabel1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 168, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
-                        .add(jLabel3)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jCheckBox1))
-                    .add(layout.createSequentialGroup()
-                        .add(jLabel2)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 72, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(1, 1, 1))
-                    .add(layout.createSequentialGroup()
-                        .add(jLabel4)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jCheckBox2))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(jLabel5)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(smtpField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 168, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(jLabel6)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(emailField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 168, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
-                        .add(jLabel9)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jButton1)
-                        .add(71, 71, 71))
-                    .add(layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(dataDirectoryText)
-                            .add(jLabel8)
-                            .add(jButton3)
-                            .add(layout.createSequentialGroup()
-                                .add(dataDirectoryButton)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jLabel10)))
-                        .add(0, 0, Short.MAX_VALUE)))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(applyButton)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(dataDirectoryText))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(dataDirectoryButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)))
+                .addGap(0, 179, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(dataDirectoryButton)
-                    .add(jLabel10))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(dataDirectoryText)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton3)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(jLabel8)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jSeparator1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel6)
-                    .add(emailField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(1, 1, 1)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel5)
-                    .add(smtpField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(jLabel3)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(jLabel4))
-                    .add(layout.createSequentialGroup()
-                        .add(jCheckBox1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jCheckBox2)))
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jButton1)
-                    .add(jLabel9))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dataDirectoryButton)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dataDirectoryText)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(applyButton)
                 .addContainerGap())
         );
+
 
         pack();
     }// </editor-fold>                        
@@ -292,14 +232,14 @@ public class settings_gui extends JFrame{
         
         Properties prop = new Properties();
         
-        prop.setProperty("updatetime", settings.updatetime+"");
+        /*prop.setProperty("updatetime", settings.updatetime+"");
         prop.setProperty("phone_number", settings.number);
         prop.setProperty("phone_update_rate", settings.update+"");
         prop.setProperty("phone_finish_update", Boolean.toString(settings.finish));
         
         prop.setProperty("email_addr", settings.email);
         prop.setProperty("smpt_addr", settings.smpt);
-        
+        */
         prop.setProperty("data_location", settings.data_location);
         prop.setProperty("data_type", settings.data_type.toString());
         
@@ -322,7 +262,7 @@ public class settings_gui extends JFrame{
         Properties prop = new Properties();
             
             prop.load(new FileInputStream("settings"));
-        
+            /*
             settings.updatetime = Integer.parseInt(prop.getProperty("updatetime"));
             settings.number = prop.getProperty("phone_number");
             settings.update = Boolean.parseBoolean(prop.getProperty("phone_update_rate"));
@@ -330,7 +270,7 @@ public class settings_gui extends JFrame{
             
             settings.email = prop.getProperty("email_addr");
             settings.smpt = prop.getProperty("smpt_addr");
-            
+            */
             settings.data_location = prop.getProperty("data_location");
             
             settings.data_type = input_type.valueOf(prop.getProperty("data_type"));
@@ -347,7 +287,7 @@ public class settings_gui extends JFrame{
     private javax.swing.JButton dataDirectoryButton;
     private javax.swing.JLabel dataDirectoryText;
     private javax.swing.JTextField emailField;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton applyButton;
     private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
