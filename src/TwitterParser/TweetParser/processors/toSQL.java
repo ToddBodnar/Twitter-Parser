@@ -200,7 +200,7 @@ public class toSQL implements twitterprocess{
 "  `time` datetime NOT NULL,\n" +
 "  `user_id` bigint(11) NOT NULL,\n" +
 "  PRIMARY KEY (`tweet_id`)\n" +
-") ENGINE=MyISAM DEFAULT CHARSET=utf8");
+") ENGINE=MyISAM DEFAULT CHARSET=utf8mb4");
             
             connection.createStatement().executeUpdate("CREATE temporary TABLE IF NOT EXISTS `tweets_tmp` (\n" +
 "  `tweet_id` bigint(11) unsigned NOT NULL,\n" +
@@ -210,7 +210,7 @@ public class toSQL implements twitterprocess{
 "  `time` datetime NOT NULL,\n" +
 "  `user_id` bigint(11) NOT NULL\n" +
 //",  PRIMARY KEY (`tweet_id`)\n" +
-") ENGINE=MEMORY DEFAULT CHARSET=utf8");
+") ENGINE=MEMORY DEFAULT CHARSET=utf8mb4");
             
             //connection.setAutoCommit( false);
             stat = connection.prepareStatement("INSERT INTO tweets_tmp (longitude,latitude, text, time, tweet_id, user_id) VALUES(?,?,?,?,?,?)");

@@ -120,6 +120,12 @@ public class tweet {
        
        tweetId = full.get("id");
        
+       String rt_ct = full.get("retweet_count");
+       if(rt_ct.equals("null") || rt_ct == null)
+           retweet_count = 0;
+       else
+           retweet_count = Integer.parseInt(full.get("retweet_count"));
+       
        user = new user(full.get("user"), input_type.API_TWEET);
        
        if(!full.get("created_at").equals("null"))
@@ -200,6 +206,18 @@ public class tweet {
        }
       // else
         //   System.err.println(input+"\n\n\n ------- \n"+full+"\n\n\n");
+    }
+    
+    public tweet(String text, String userid, long date, double x, double y)
+    {
+        this.text = text;
+        this.user_id = userid;
+        
+        this.time = date;
+        
+        this.boundingbox = new Point2D.Double[2];
+        boundingbox[0] = new Point2D.Double(x,y);
+        boundingbox[1] = boundingbox[0];
     }
     
     /**
@@ -344,6 +362,7 @@ public class tweet {
     //user
     
     public String retweeted_ID, retweeted_time;
+    public int retweet_count;
     
     public long time;
     public String tweetId;    

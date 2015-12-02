@@ -36,7 +36,9 @@ public class writeTweets implements twitterprocess
     }
     @Override
     public void consume(tweet t) {
-        out.print(t.time+"\t"+t.tweetId+"\t"+(t.user==null || t.user.id_str==null?"null":t.user.id_str)+"\t"+t.text.replace("\t", " ")+"\t");
+        out.print(t.time+"\t"+t.tweetId+"\t"+t.retweet_count+"\t");
+        
+        out.print((t.user==null || t.user.id_str==null?"null":t.user.id_str)+"\t"+t.text.replace("\t", " ")+"\t");
         if(t.boundingbox!=null && t.boundingbox.length>1)
             out.print((t.boundingbox[0].x+t.boundingbox[1].x)/2.0+"\t"+(t.boundingbox[0].y+t.boundingbox[1].y)/2.0);
         else
