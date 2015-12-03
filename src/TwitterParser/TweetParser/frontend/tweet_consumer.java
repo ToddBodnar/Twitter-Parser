@@ -142,21 +142,21 @@ public class tweet_consumer {
         
        
         Thread t;
-        //twit_process_driver drivers[] = new twit_process_driver[20];
+        //twit_process_driver drivers[] = new tweet_process_driver[20];
        // for(int ct=0;ct<drivers.length;ct++){
         //tp = new sqlProcessTuckerClass();
         
-        twit_process_driver drivers = new twit_process_driver(tp, queue, endSms);
+        tweet_process_driver drivers = new tweet_process_driver(tp, queue, endSms);
         
         t = new Thread(drivers);
         t.start();
         
         
-        twit_parse_driver tpd[] = new twit_parse_driver[2];
+        tweet_parse_driver tpd[] = new tweet_parse_driver[2];
         
         for(int ct=0;ct<2;ct++)
         {
-            tpd[ct] = new twit_parse_driver(input,queue);
+            tpd[ct] = new tweet_parse_driver(input,queue);
             t = new Thread(tpd[ct]);
             t.start();
         }
@@ -283,9 +283,9 @@ public class tweet_consumer {
         }
         String one,two;
     }
-    private static class twit_parse_driver implements Runnable
+    private static class tweet_parse_driver implements Runnable
     {
-        public twit_parse_driver(BlockingQueue<str_pair> in, BlockingQueue<tweet> out)
+        public tweet_parse_driver(BlockingQueue<str_pair> in, BlockingQueue<tweet> out)
         {
             this.in = in;
             this.out = out;
@@ -385,9 +385,9 @@ public class tweet_consumer {
         
     }
     
-    private static class twit_process_driver implements Runnable
+    private static class tweet_process_driver implements Runnable
     {
-        public twit_process_driver(twitterProcess tp, BlockingQueue<tweet> tweetQueue, boolean textatend)
+        public tweet_process_driver(twitterProcess tp, BlockingQueue<tweet> tweetQueue, boolean textatend)
         {
             t = tp;
             tweets = tweetQueue;

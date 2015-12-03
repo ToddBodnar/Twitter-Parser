@@ -17,7 +17,6 @@ public interface twitterProcess{
     /**
      * After being parsed, the tweet will be fed to this twitter process
      * @param t
-     * @throws TwitterMessage
      */
     public void consume(tweet t);
     
