@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * Prints the time, id, text and location of tweets
  * @author toddbodnar
  */
-public class writeTweets implements twitterprocess
+public class writeTweets implements twitterProcess
 {     
     public writeTweets(String file)
     {
@@ -68,12 +68,12 @@ public class writeTweets implements twitterprocess
     }
 
     @Override
-    public twitterprocess clone() {
+    public twitterProcess clone() {
         return new writeTweets(JOptionPane.showInputDialog(null, "File name?"));
     }
 
     @Override
-    public twitterprocess load(String in) {
+    public twitterProcess load(String in) {
         return new writeTweets(in);
     }
 

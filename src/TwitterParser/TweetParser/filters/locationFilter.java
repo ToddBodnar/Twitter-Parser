@@ -5,7 +5,7 @@
 package TwitterParser.TweetParser.filters;
 
 import TwitterParser.TweetParser.filters.tweetFilter;
-import TwitterParser.TweetParser.processors.twitterprocess;
+import TwitterParser.TweetParser.processors.twitterProcess;
 import TwitterParser.TweetParser.tweet;
 import TwitterParser.helpers.JobFileIO;
 import com.vividsolutions.jts.geom.Coordinate;
@@ -45,7 +45,7 @@ import org.opengis.geometry.Geometry;
  */
 public class locationFilter implements tweetFilter{
 
-    twitterprocess next;
+    twitterProcess next;
     Path2D polygon = null;
     String shapeFile = "/Users/toddbodnar/Downloads/California County Shape Files/sandiego.csv";
     public void init() throws Exception
@@ -85,7 +85,7 @@ public class locationFilter implements tweetFilter{
     }
     
     @Override
-    public tweetFilter clone(twitterprocess next) {
+    public tweetFilter clone(twitterProcess next) {
         locationFilter l = new locationFilter();
         JFileChooser jfc = new JFileChooser();
         jfc.showOpenDialog(null);
@@ -125,12 +125,12 @@ public class locationFilter implements tweetFilter{
     }
 
     @Override
-    public twitterprocess clone() {
+    public twitterProcess clone() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public twitterprocess load(String in) {
+    public twitterProcess load(String in) {
         locationFilter l = new locationFilter();
         l.shapeFile = in.split(";")[0];
         try {
@@ -138,7 +138,7 @@ public class locationFilter implements tweetFilter{
         } catch (Exception ex) {
             Logger.getLogger(locationFilter.class.getName()).log(Level.SEVERE, null, ex);
         }
-        twitterprocess next = JobFileIO.load(in.substring(in.indexOf(";")+1));
+        twitterProcess next = JobFileIO.load(in.substring(in.indexOf(";")+1));
         l.next = next;
         return l;
     }

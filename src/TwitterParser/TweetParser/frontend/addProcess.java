@@ -4,7 +4,7 @@
  */
 package TwitterParser.TweetParser.frontend;
 
-import TwitterParser.TweetParser.processors.twitterprocess;
+import TwitterParser.TweetParser.processors.twitterProcess;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +17,7 @@ import javax.swing.JTextArea;
  * @author toddbodnar
  */
 public class addProcess extends JMenuItem{
-    public addProcess(twitterprocess t, List<twitterprocess> processes,JTextArea user)
+    public addProcess(twitterProcess t, List<twitterProcess> processes,JTextArea user)
     {
         super.setText(t.buttonMenu());
         super.setToolTipText(t.toolTip());
@@ -26,7 +26,7 @@ public class addProcess extends JMenuItem{
         process = processes;
         super.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                twitterprocess proc;
+                twitterProcess proc;
                 
                     proc = prototype.clone();
                     process.add(proc);
@@ -36,7 +36,7 @@ public class addProcess extends JMenuItem{
             }
         });
     }
-    private twitterprocess prototype;
-    private List<twitterprocess> process;
+    private twitterProcess prototype;
+    private List<twitterProcess> process;
     private JTextArea data;
 }

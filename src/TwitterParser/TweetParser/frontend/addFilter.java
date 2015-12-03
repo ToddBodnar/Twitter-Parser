@@ -6,7 +6,7 @@ package TwitterParser.TweetParser.frontend;
 
 
 import TwitterParser.TweetParser.filters.tweetFilter;
-import TwitterParser.TweetParser.processors.twitterprocess;
+import TwitterParser.TweetParser.processors.twitterProcess;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +20,7 @@ import javax.swing.JTextArea;
  * @author toddbodnar
  */
 public class addFilter extends JMenu{
-    public addFilter(tweetFilter filter, twitterprocess nexts[], List<twitterprocess> processes,JTextArea user, int recursion)
+    public addFilter(tweetFilter filter, twitterProcess nexts[], List<twitterProcess> processes,JTextArea user, int recursion)
     {
         super(filter.buttonMenu());
         super.setToolTipText(filter.toolTip());
@@ -28,14 +28,14 @@ public class addFilter extends JMenu{
         ne=nexts;
         process = processes;
         data = user;
-        for(twitterprocess t:nexts)
+        for(twitterProcess t:nexts)
         {
-            final twitterprocess tp = t;
+            final twitterProcess tp = t;
             JMenuItem item = new JMenuItem(t.buttonMenu());
             item.setToolTipText(t.toolTip());
             item.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                twitterprocess proc;
+                twitterProcess proc;
                         proc = f.clone(tp.clone());
                         process.add(proc);
                         data.setText(data.getText()+"\n"+proc.toString());
@@ -56,7 +56,7 @@ public class addFilter extends JMenu{
         }*///Todo: multiple filters
     }
     private tweetFilter f;
-    private twitterprocess ne[];
-    private List<twitterprocess> process;
+    private twitterProcess ne[];
+    private List<twitterProcess> process;
     JTextArea data;
 }

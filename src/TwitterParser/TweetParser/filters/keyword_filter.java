@@ -7,7 +7,7 @@
 //This site may be useful http://how-to-spell.net/meningitis
 package TwitterParser.TweetParser.filters;
 
-import TwitterParser.TweetParser.processors.twitterprocess;
+import TwitterParser.TweetParser.processors.twitterProcess;
 import TwitterParser.TweetParser.tweet;
 import TwitterParser.helpers.JobFileIO;
 import java.util.Deque;
@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class keyword_filter implements tweetFilter{
 
-    public keyword_filter(twitterprocess next, String keys[])
+    public keyword_filter(twitterProcess next, String keys[])
     {
         
         this.next = next;
@@ -37,7 +37,7 @@ public class keyword_filter implements tweetFilter{
             type = type+","+keywords[ct];
         }
     }
-    public keyword_filter(twitterprocess next)
+    public keyword_filter(twitterProcess next)
     {
         this(next,new String[]{"foo","bar"});
     }
@@ -96,7 +96,7 @@ public class keyword_filter implements tweetFilter{
     public boolean quitAtEnd() {
         return next.quitAtEnd();
     }
-    twitterprocess next;
+    twitterProcess next;
     long total,filtered;
     
     public String type,nextProcess;  
@@ -128,7 +128,7 @@ public class keyword_filter implements tweetFilter{
     }
 
     @Override
-    public twitterprocess clone() {
+    public twitterProcess clone() {
         
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -138,7 +138,7 @@ public class keyword_filter implements tweetFilter{
         return "Filters based on a set of keywords";
     }
 
-    public tweetFilter clone(twitterprocess next){
+    public tweetFilter clone(twitterProcess next){
         
         
         Queue<String> keywords = new LinkedList<String>();
@@ -166,12 +166,12 @@ public class keyword_filter implements tweetFilter{
     }
 
     @Override
-    public twitterprocess load(String in) {
+    public twitterProcess load(String in) {
         
         
         String keywords[] = in.split(";")[0].split(",");
         
-        twitterprocess next = JobFileIO.load(in.substring(in.indexOf(";")+1));
+        twitterProcess next = JobFileIO.load(in.substring(in.indexOf(";")+1));
         
         return new keyword_filter(next,keywords);
     }

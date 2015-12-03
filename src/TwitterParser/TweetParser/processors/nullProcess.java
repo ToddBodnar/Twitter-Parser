@@ -10,7 +10,7 @@ import TwitterParser.TweetParser.tweet;
  * Equivalent to /dev/null reads in tweets and doesn't do anything
  * @author toddbodnar
  */
-public class nullProcess implements twitterprocess{
+public class nullProcess implements twitterProcess{
 
     long tweetCount = 0;
     
@@ -35,12 +35,12 @@ public class nullProcess implements twitterprocess{
     }
 
     @Override
-    public twitterprocess clone() {
+    public twitterProcess clone() {
         return new nullProcess();
     }
 
     @Override
-    public twitterprocess load(String in) {
+    public twitterProcess load(String in) {
         return new nullProcess();
     }
 

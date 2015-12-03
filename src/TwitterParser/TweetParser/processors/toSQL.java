@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author toddbodnar
  */
-public class toSQL implements twitterprocess{
+public class toSQL implements twitterProcess{
     
   
     
@@ -116,7 +116,7 @@ public class toSQL implements twitterprocess{
     }
 
     @Override
-    public twitterprocess clone() {
+    public twitterProcess clone() {
         String input = "";
         
         toSQL child = new toSQL();
@@ -162,7 +162,7 @@ public class toSQL implements twitterprocess{
     }
 
     @Override
-    public twitterprocess load(String in) {
+    public twitterProcess load(String in) {
         String split[] = in.split(";");
         toSQL child = new toSQL();
         

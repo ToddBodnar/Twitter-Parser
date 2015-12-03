@@ -6,7 +6,7 @@ package TwitterParser.TweetParser.frontend;
 
 import TwitterParser.TweetParser.settings;
 import TwitterParser.TweetParser.filters.multiProcess;
-import TwitterParser.TweetParser.processors.twitterprocess;
+import TwitterParser.TweetParser.processors.twitterProcess;
 import TwitterParser.TweetParser.tweet;
 import TwitterParser.helpers.input_type;
 import java.awt.Color;
@@ -58,7 +58,7 @@ public class tweet_consumer {
      * @throws FileNotFoundException
      * @throws IOException 
      */
-    public static void consume (String data[], twitterprocess[] processes, String title, main_gui g) throws FileNotFoundException, IOException
+    public static void consume (String data[], twitterProcess[] processes, String title, main_gui g) throws FileNotFoundException, IOException
 {   
         
         tweet_consumer.the_gui = g;
@@ -134,9 +134,9 @@ public class tweet_consumer {
         
         
         
-        twitterprocess tp = new multiProcess();// = new multiProcess();
+        twitterProcess tp = new multiProcess();// = new multiProcess();
         
-        for(twitterprocess i : processes)
+        for(twitterProcess i : processes)
             ((multiProcess)tp).add(i);
         
         
@@ -270,7 +270,7 @@ public class tweet_consumer {
             if(bup!=null)
              bup.done = true;
         
-        //it is up to the twitterprocess to stop the program
+        //it is up to the twitterProcess to stop the program
     }
     public static boolean finished = false;
     
@@ -387,7 +387,7 @@ public class tweet_consumer {
     
     private static class twit_process_driver implements Runnable
     {
-        public twit_process_driver(twitterprocess tp, BlockingQueue<tweet> tweetQueue, boolean textatend)
+        public twit_process_driver(twitterProcess tp, BlockingQueue<tweet> tweetQueue, boolean textatend)
         {
             t = tp;
             tweets = tweetQueue;
@@ -395,7 +395,7 @@ public class tweet_consumer {
         }
         
         
-        private twitterprocess t;
+        private twitterProcess t;
         private BlockingQueue<tweet> tweets;
         private boolean done = false, textAtEnd;
 

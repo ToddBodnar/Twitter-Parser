@@ -9,10 +9,10 @@ import TwitterParser.TweetParser.tweet;
 
 
 /**
- * 
+ * An interface for something that processes tweets
  * @author toddbodnar
  */
-public interface twitterprocess{
+public interface twitterProcess{
     
     /**
      * After being parsed, the tweet will be fed to this twitter process
@@ -26,6 +26,9 @@ public interface twitterprocess{
      */
     public String end();
     
+    /*
+    * @deprecated unnecessary, gui will -never- close after completion and headless will always close
+    */
     public boolean quitAtEnd();
     
     /*
@@ -38,7 +41,7 @@ public interface twitterprocess{
      * You can get user input through JFileChooser, JOptionPane, etc. 
      * This is called right after a user clicks on the process's menu entry
      */
-    public twitterprocess clone();
+    public twitterProcess clone();
     
     
     /**
@@ -47,7 +50,7 @@ public interface twitterprocess{
      * @return
      * @throws TwitterMessage 
      */
-    public twitterprocess load(String in);
+    public twitterProcess load(String in);
     
     /**
      * Writes the process to a string, do not include ; or line breaks

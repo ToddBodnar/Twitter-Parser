@@ -11,7 +11,7 @@ package TwitterParser.TweetParser.frontend;
 
 import TwitterParser.TweetParser.settings;
 import TwitterParser.TweetParser.filters.tweetFilter;
-import TwitterParser.TweetParser.processors.twitterprocess;
+import TwitterParser.TweetParser.processors.twitterProcess;
 import TwitterParser.helpers.JobFileIO;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -33,11 +33,11 @@ public class main_gui extends javax.swing.JFrame {
      */
     public main_gui() {
         initComponents();
-        processes = new LinkedList<twitterprocess>();
+        processes = new LinkedList<twitterProcess>();
         dates = new int[]{20110402,20110402};
        
        
-        for(twitterprocess i: JobFileIO.processlist)
+        for(twitterProcess i: JobFileIO.processlist)
         {
             jMenu4.add(new addProcess(i,processes,jList1));
         }
@@ -64,7 +64,7 @@ public class main_gui extends javax.swing.JFrame {
     String dataset[] = new String[]{"/Users/toddbodnar/data/20110420/"};
     int dates[];
 
-    private List<twitterprocess> processes;
+    private List<twitterProcess> processes;
     List<job> jobs;
     
     private class doJob implements Runnable
@@ -374,7 +374,7 @@ public class main_gui extends javax.swing.JFrame {
     }                                          
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        twitterprocess copy[] = new twitterprocess[processes.size()];
+        twitterProcess copy[] = new twitterProcess[processes.size()];
         
         for(int i=0;i<copy.length;i++)
             copy[i] = processes.get(i);
@@ -405,7 +405,7 @@ public class main_gui extends javax.swing.JFrame {
         jTextField1.setText("Custom "+dates[0]+" "+dates[1]);
         
         jList1.setText("");
-        for(twitterprocess t:processes)
+        for(twitterProcess t:processes)
              jList1.setText(jList1.getText()+"\n"+t.toString());
     }                                          
 
@@ -456,7 +456,7 @@ public class main_gui extends javax.swing.JFrame {
 
     private class job
     {
-        public job(String dataset[], twitterprocess processes[])
+        public job(String dataset[], twitterProcess processes[])
         {
             data = dataset;
             process = processes;
@@ -468,13 +468,13 @@ public class main_gui extends javax.swing.JFrame {
                 s+="  -  "+data[data.length-1];
             s+="\n\n";
             
-            for(twitterprocess t:process)
+            for(twitterProcess t:process)
                 s+=t.toString()+"\n";
             
             return s+"\n--------------";
         }
         public String[] data;
-        public twitterprocess process[];
+        public twitterProcess process[];
         main_gui frame;
         
     }
@@ -483,7 +483,7 @@ public class main_gui extends javax.swing.JFrame {
     {
         try {
             File f = new File(args[args.length-1]);
-            List<twitterprocess>processes = new LinkedList<twitterprocess>();
+            List<twitterProcess>processes = new LinkedList<twitterProcess>();
             int dates[] = new int[2];
             JobFileIO.load(f, processes, dates);
             String[] dataset; //= new String[dates[1]-dates[0]+1];
@@ -495,13 +495,13 @@ public class main_gui extends javax.swing.JFrame {
             
             dataset = new String[]{settings.data_location};
         
-            System.out.println("Timeframe: "+dates[0]+" "+dates[1]);
+            //System.out.println("Timeframe: "+dates[0]+" "+dates[1]);
         
             System.out.println("----");
-             for(twitterprocess t:processes)
+             for(twitterProcess t:processes)
                   System.out.println(t.toString());
              
-             twitterprocess copy[] = new twitterprocess[processes.size()];
+             twitterProcess copy[] = new twitterProcess[processes.size()];
         
             for(int i=0;i<copy.length;i++)
                  copy[i] = processes.get(i);

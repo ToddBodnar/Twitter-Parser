@@ -4,7 +4,7 @@
  */
 package TwitterParser.TweetParser.filters;
 
-import TwitterParser.TweetParser.processors.twitterprocess;
+import TwitterParser.TweetParser.processors.twitterProcess;
 import TwitterParser.TweetParser.tweet;
 import java.awt.geom.Point2D;
 import java.io.IOException;
@@ -20,11 +20,11 @@ import java.util.logging.Logger;
 public class multiProcess implements tweetFilter{
     public multiProcess()
     {
-        runningProcesses = new LinkedList<twitterprocess>();
-        allProcesses = new LinkedList<twitterprocess>();
+        runningProcesses = new LinkedList<twitterProcess>();
+        allProcesses = new LinkedList<twitterProcess>();
     }
     
-    public void add(twitterprocess t)
+    public void add(twitterProcess t)
     {
         runningProcesses.add(t);
         allProcesses.add(t);
@@ -32,15 +32,15 @@ public class multiProcess implements tweetFilter{
     
     @Override
     public void consume(tweet t) {
-        LinkedList<twitterprocess> toRemove = new LinkedList<twitterprocess>();
-        for(twitterprocess tp : runningProcesses)
+        LinkedList<twitterProcess> toRemove = new LinkedList<twitterProcess>();
+        for(twitterProcess tp : runningProcesses)
         {
                 tp.consume(t);
             
             
         }
         
-        for(twitterprocess tp : toRemove)
+        for(twitterProcess tp : toRemove)
             runningProcesses.remove(tp);
         
         
@@ -49,7 +49,7 @@ public class multiProcess implements tweetFilter{
     @Override
     public String end() {
         String s = "";
-        for(twitterprocess tp : allProcesses)
+        for(twitterProcess tp : allProcesses)
             s+=tp.end()+'\n';
         
         return s;
@@ -57,7 +57,7 @@ public class multiProcess implements tweetFilter{
 
     @Override
     public boolean quitAtEnd() {
-        for(twitterprocess tp : allProcesses)
+        for(twitterProcess tp : allProcesses)
             if(tp.quitAtEnd())
                 return true;
         
@@ -69,7 +69,7 @@ public class multiProcess implements tweetFilter{
         return "Allows multiple twitter processes";
     }
     
-    private List<twitterprocess> runningProcesses, allProcesses;
+    private List<twitterProcess> runningProcesses, allProcesses;
     
 
 
@@ -81,12 +81,12 @@ public class multiProcess implements tweetFilter{
     }
 
     @Override
-    public tweetFilter clone(twitterprocess p) {
+    public tweetFilter clone(twitterProcess p) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public twitterprocess load(String in) {
+    public twitterProcess load(String in) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -98,7 +98,7 @@ public class multiProcess implements tweetFilter{
     
 
     @Override
-    public twitterprocess clone() {
+    public twitterProcess clone() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

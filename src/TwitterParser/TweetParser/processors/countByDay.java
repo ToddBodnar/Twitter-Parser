@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  * Prints the time, id, text and location of tweets
  * @author toddbodnar
  */
-public class countByDay implements twitterprocess
+public class countByDay implements twitterProcess
 {     
     public countByDay(String title)
     {
@@ -96,12 +96,12 @@ public class countByDay implements twitterprocess
     }
 
     @Override
-    public twitterprocess clone() {
+    public twitterProcess clone() {
         return new countByDay(JOptionPane.showInputDialog(null, "Title?"));
     }
 
     @Override
-    public twitterprocess load(String in) {
+    public twitterProcess load(String in) {
         return new countByDay(in);
     }
 
