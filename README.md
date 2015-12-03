@@ -1,6 +1,11 @@
 Twitter-Parser
 ==============
 
+What's the fastest way to get started?
+--------------
+
+Read the [User Guide](https://github.com/ToddBodnar/Twitter-Parser/releases/download/0.9/Twitter.Parser.User.Guide.pdf) supplied with the latest release.
+
 What is this?
 --------------
 
